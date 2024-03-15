@@ -1,0 +1,38 @@
+HomeTeam - Time da Casa
+AwayTeam - Time Visitante
+GEHT1T - Gols esperados do time da casa no 1° tempo
+GEAT1T - Gols esperados do time visitante no 1° tempo
+PBHT1T - Posse de Bola do time da casa no 1° tempo
+PBAT1T - Posse de Bola do time visitante no 1° tempo
+TGHT1T - Tentativas de Gol do time da casa no 1° tempo
+TGAT1T - Tentativas de Gol do time visitante no 1° tempo
+CGHT1T - Chutes no Gol feitos pelo time da casa no 1° tempo
+CGAT1T - Chutes no Gol feitos pelo time visitante no 1° tempo
+CFHT1T - Chutes para Fora feitos pelo time da casa no 1° tempo
+CFAT1T - Chutes para Fora feitos pelo time visitante no 1° tempo
+FCHT1T - Faltas Cobradas pelo time da casa no 1° tempo
+FCAT1T - Faltas Cobradas pelo time visitante no 1° tempo
+EHT1T - Escanteios do time da casa no 1° tempo
+EAT1T - Escanteios do time visitante no 1° tempo
+IHT1T - Impedimentos do time da casa no 1° tempo
+IAT1T - Impedimentos do time visitante no 1° tempo
+LCHT1T - Laterais Cobrados do time da casa no 1° tempo
+LCAT1T - Laterais Cobrados do time visitante no 1° tempo
+DGHT1T - Defesas do Goleiro do time da casa no 1° tempo
+DGAT1T - Defesas do Goleiro do time visitante no 1° tempo
+FHT1T - Faltas do time da casa no 1° tempo
+FAT1T - Faltas do time visitante no 1° tempo
+CVHT1T - Cartões Vermelhos do time da casa no 1° tempo
+CVAT1T - Cartões Vermelhos do time visitante no 1° tempo
+CAHT1T - Cartões Amarelos do time da casa no 1° tempo
+CAAT1T - Cartões Amarelos do time visitante no 1° tempo
+PTHT1T - Passes Totais do time da casa no 1° tempo
+PTAT1T - Passes Totais do time visitante no 1° tempo
+DHT1T - Desarmes do time da casa no 1° tempo
+DAT1T - Desarmes do time visitante no 1° tempo
+AHT1T - Ataques do time da casa no 1° tempo
+AAT1T - Ataques do time visitante no 1° tempo
+APHT1T - Ataques Perigosos do time da casa no 1° tempo
+APAT1T - Ataques Perigosos do time visitante no 1° tempo
+BACHT1T - Bolas Afastadas Completadas do time da casa no 1° tempo
+BACAT1T - Bolas Afastadas Completadas do time visitante no 1° tempo
