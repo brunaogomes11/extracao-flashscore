@@ -1,1 +1,0 @@
-"# extracao-flashscore" 
