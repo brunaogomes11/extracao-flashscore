@@ -1,5 +1,41 @@
 HomeTeam - Time da Casa
 AwayTeam - Time Visitante
+GEHT0T - Gols esperados do time da casa no Tempo Regular
+GEAT0T - Gols esperados do time visitante no Tempo Regular
+PBHT0T - Posse de Bola do time da casa no Tempo Regular
+PBAT0T - Posse de Bola do time visitante no Tempo Regular
+TGHT0T - Tentativas de Gol do time da casa no Tempo Regular
+TGAT0T - Tentativas de Gol do time visitante no Tempo Regular
+CGHT0T - Chutes no Gol feitos pelo time da casa no Tempo Regular
+CGAT0T - Chutes no Gol feitos pelo time visitante no Tempo Regular
+CFHT0T - Chutes para Fora feitos pelo time da casa no Tempo Regular
+CFAT0T - Chutes para Fora feitos pelo time visitante no Tempo Regular
+FCHT0T - Faltas Cobradas pelo time da casa no Tempo Regular
+FCAT0T - Faltas Cobradas pelo time visitante no Tempo Regular
+EHT0T - Escanteios do time da casa no Tempo Regular
+EAT0T - Escanteios do time visitante no Tempo Regular
+IHT0T - Impedimentos do time da casa no Tempo Regular
+IAT0T - Impedimentos do time visitante no Tempo Regular
+LCHT0T - Laterais Cobrados do time da casa no Tempo Regular
+LCAT0T - Laterais Cobrados do time visitante no Tempo Regular
+DGHT0T - Defesas do Goleiro do time da casa no Tempo Regular
+DGAT0T - Defesas do Goleiro do time visitante no Tempo Regular
+FHT0T - Faltas do time da casa no Tempo Regular
+FAT0T - Faltas do time visitante no Tempo Regular
+CVHT0T - Cartões Vermelhos do time da casa no Tempo Regular
+CVAT0T - Cartões Vermelhos do time visitante no Tempo Regular
+CAHT0T - Cartões Amarelos do time da casa no Tempo Regular
+CAAT0T - Cartões Amarelos do time visitante no Tempo Regular
+PTHT0T - Passes Totais do time da casa no Tempo Regular
+PTAT0T - Passes Totais do time visitante no Tempo Regular
+DHT0T - Desarmes do time da casa no Tempo Regular
+DAT0T - Desarmes do time visitante no Tempo Regular
+AHT0T - Ataques do time da casa no Tempo Regular
+AAT0T - Ataques do time visitante no Tempo Regular
+APHT0T - Ataques Perigosos do time da casa no Tempo Regular
+APAT0T - Ataques Perigosos do time visitante no Tempo Regular
+BACHT0T - Bolas Afastadas Completadas do time da casa no Tempo Regular
+BACAT0T - Bolas Afastadas Completadas do time visitante no Tempo Regular
 GEHT1T - Gols esperados do time da casa no 1° tempo
 GEAT1T - Gols esperados do time visitante no 1° tempo
 PBHT1T - Posse de Bola do time da casa no 1° tempo
@@ -36,3 +72,39 @@ APHT1T - Ataques Perigosos do time da casa no 1° tempo
 APAT1T - Ataques Perigosos do time visitante no 1° tempo
 BACHT1T - Bolas Afastadas Completadas do time da casa no 1° tempo
 BACAT1T - Bolas Afastadas Completadas do time visitante no 1° tempo
+GEHT2T - Gols esperados do time da casa no 2° tempo
+GEAT2T - Gols esperados do time visitante no 2° tempo
+PBHT2T - Posse de Bola do time da casa no 2° tempo
+PBAT2T - Posse de Bola do time visitante no 2° tempo
+TGHT2T - Tentativas de Gol do time da casa no 2° tempo
+TGAT2T - Tentativas de Gol do time visitante no 2° tempo
+CGHT2T - Chutes no Gol feitos pelo time da casa no 2° tempo
+CGAT2T - Chutes no Gol feitos pelo time visitante no 2° tempo
+CFHT2T - Chutes para Fora feitos pelo time da casa no 2° tempo
+CFAT2T - Chutes para Fora feitos pelo time visitante no 2° tempo
+FCHT2T - Faltas Cobradas pelo time da casa no 2° tempo
+FCAT2T - Faltas Cobradas pelo time visitante no 2° tempo
+EHT2T - Escanteios do time da casa no 2° tempo
+EAT2T - Escanteios do time visitante no 2° tempo
+IHT2T - Impedimentos do time da casa no 2° tempo
+IAT2T - Impedimentos do time visitante no 2° tempo
+LCHT2T - Laterais Cobrados do time da casa no 2° tempo
+LCAT2T - Laterais Cobrados do time visitante no 2° tempo
+DGHT2T - Defesas do Goleiro do time da casa no 2° tempo
+DGAT2T - Defesas do Goleiro do time visitante no 2° tempo
+FHT2T - Faltas do time da casa no 2° tempo
+FAT2T - Faltas do time visitante no 2° tempo
+CVHT2T - Cartões Vermelhos do time da casa no 2° tempo
+CVAT2T - Cartões Vermelhos do time visitante no 2° tempo
+CAHT2T - Cartões Amarelos do time da casa no 2° tempo
+CAAT2T - Cartões Amarelos do time visitante no 2° tempo
+PTHT2T - Passes Totais do time da casa no 2° tempo
+PTAT2T - Passes Totais do time visitante no 2° tempo
+DHT2T - Desarmes do time da casa no 2° tempo
+DAT2T - Desarmes do time visitante no 2° tempo
+AHT2T - Ataques do time da casa no 2° tempo
+AAT2T - Ataques do time visitante no 2° tempo
+APHT2T - Ataques Perigosos do time da casa no 2° tempo
+APAT2T - Ataques Perigosos do time visitante no 2° tempo
+BACHT2T - Bolas Afastadas Completadas do time da casa no 2° tempo
+BACAT2T - Bolas Afastadas Completadas do time visitante no 2° tempo

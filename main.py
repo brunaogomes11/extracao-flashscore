@@ -1,47 +1,73 @@
 
 paises_campeonatos = [
     {
-        "País":"Inglaterra",
+        "País":"Europa",
         "Campeonatos":[
-            {"Nome":"Premier League", "inicio":1989, "fim": 2024},
-            {"Nome":"Championship", "inicio":1989, "fim": 2024},
-        ]
-    },
-    {
-        "País":"Brasil",
-        "Campeonatos":[
-            {"Nome":"Série A", "inicio":1989, "fim": 2024},
-            {"Nome":"Série B", "inicio":1989, "fim": 2024},
+            {"Nome":"Liga dos Campeões", "inicio":1989, "fim": 2024, "label":'liga-dos-campeoes'},
+            {"Nome":"Liga Europa", "inicio":1989, "fim": 2024, "label":'liga-europa'},
+            {"Nome":"Liga da Conferência Europeia", "inicio":2021, "fim": 2024, "label":'liga-da-conferencia-europei'},
         ]
     },
     {
         "País":"Alemanha",
         "Campeonatos":[
-            {"Nome":"Bundesliga", "inicio":1989, "fim": 2024},
-            {"Nome":"Bundesliga 2", "inicio":1989, "fim": 2024},
+            {"Nome":"Bundesliga", "inicio":1989, "fim": 2024, "label":'bundesliga'},
+            {"Nome":"Bundesliga 2", "inicio":1989, "fim": 2024, "label":'2-bundesliga'},
         ]
     },
+    {
+        "País":"Espanha",
+        "Campeonatos":[
+            {"Nome":"LaLiga", "inicio":1989, "fim": 2024, "label":'laliga'},
+            {"Nome":"LaLiga 2", "inicio":1989, "fim": 2024, "label":'laliga2'},
+        ]
+    },
+    {
+        "País":"França",
+        "Campeonatos":[
+            {"Nome":"Ligue 1", "inicio":1989, "fim": 2024, "label":'ligue-1'},
+            {"Nome":"Ligue 2", "inicio":1989, "fim": 2024, "label":'ligue-2'},
+        ]
+    },
+    {
+        "País":"Inglaterra",
+        "Campeonatos":[
+            {"Nome":"Premier League", "inicio":1989, "fim": 2024, "label":'campeonato-ingles'},
+            {"Nome":"Championship", "inicio":1989, "fim": 2024, "label":'2-divisao'},
+        ]
+    },
+    {
+        "País":"Italia",
+        "Campeonatos":[
+            {"Nome":"Série A", "inicio":1989, "fim": 2024, "label":'serie-a'},
+            {"Nome":"Série B", "inicio":1989, "fim": 2024, "label":'serie-b'},
+        ]
+    },
+    # {
+    #     "País":"Brasil",
+    #     "Campeonatos":[
+    #         {"Nome":"Série A", "inicio":1998, "fim": 2024, "label":'serie-a'},
+    #         {"Nome":"Série B", "inicio":1989, "fim": 2024, "label":'serie-b'},
+    #     ]
+    # },
 ]
 from everyRounds import get_data_from_tournament
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, Qt)
+from PySide6.QtGui import (QFont, QPixmap)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QGridLayout,
-    QLabel, QPushButton, QSizePolicy, QSplitter,
-    QTextEdit, QWidget)
+    QLabel, QPushButton, QSplitter,
+    QTextEdit, QWidget, QVBoxLayout)
 
 class Ui_Main(object):
     def setupUi(self, Main):
         if not Main.objectName():
             Main.setObjectName(u"Main")
-        Main.resize(335, 614)
+        Main.resize(806, 614)
         font = QFont()
         font.setFamilies([u"Leelawadee UI"])
         Main.setFont(font)
+        Main.setMinimumSize(QSize(806, 614))
+        Main.setMaximumSize(QSize(806, 614))
         self.gridLayout = QGridLayout(Main)
         self.gridLayout.setObjectName(u"gridLayout")
         self.tituloLabel = QLabel(Main)
@@ -161,6 +187,10 @@ class Ui_Main(object):
         self.second_timeCB = QCheckBox(self.splitter)
         self.second_timeCB.setObjectName(u"second_timeCB")
         self.second_timeCB.setMaximumSize(QSize(16777215, 30))
+        self.full_timeCB.stateChanged.connect(self.ativarGerar)
+        self.first_timeCB.stateChanged.connect(self.ativarGerar)
+        self.second_timeCB.stateChanged.connect(self.ativarGerar)
+        
         self.splitter.addWidget(self.second_timeCB)
 
         self.gridLayout.addWidget(self.splitter, 11, 0, 1, 1)
@@ -171,9 +201,128 @@ class Ui_Main(object):
         self.gerarButton.setMinimumSize(QSize(200, 50))
         self.gerarButton.setMaximumSize(QSize(200, 50))
         self.gerarButton.setFont(font2)
+        self.gerarButton.clicked.connect(self.verificarInput)
 
         self.gridLayout.addWidget(self.gerarButton, 12, 0, 1, 1, Qt.AlignHCenter)
+        # self.progressBar = QProgressBar(Main)
+        # self.progressBar.setObjectName(u"progressBar")
+        # self.gerarButton.clicked.connect(self.verificarInput)
+        # self.progressBar.setValue(0)
 
+        # self.gridLayout.addWidget(self.progressBar, 13, 0, 1, 1)
+        
+        self.Estatisticas = QVBoxLayout()
+        self.Estatisticas.setObjectName(u"Estatisticas")
+        self.est1 = QCheckBox(Main)
+        self.est1.setObjectName(u"est1")
+        self.est1.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est1)
+
+        self.est2 = QCheckBox(Main)
+        self.est2.setObjectName(u"est2")
+        self.est2.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est2)
+
+        self.est3 = QCheckBox(Main)
+        self.est3.setObjectName(u"est3")
+        self.est3.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est3)
+
+        self.est4 = QCheckBox(Main)
+        self.est4.setObjectName(u"est4")
+        self.est4.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est4)
+
+        self.est5 = QCheckBox(Main)
+        self.est5.setObjectName(u"est5")
+        self.est5.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est5)
+
+        self.est6 = QCheckBox(Main)
+        self.est6.setObjectName(u"est6")
+        self.est6.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est6)
+
+        self.estt7 = QCheckBox(Main)
+        self.estt7.setObjectName(u"estt7")
+        self.estt7.setChecked(True)
+
+        self.Estatisticas.addWidget(self.estt7)
+
+        self.est8 = QCheckBox(Main)
+        self.est8.setObjectName(u"est8")
+        self.est8.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est8)
+
+        self.est9 = QCheckBox(Main)
+        self.est9.setObjectName(u"est9")
+        self.est9.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est9)
+
+        self.est10 = QCheckBox(Main)
+        self.est10.setObjectName(u"est10")
+        self.est10.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est10)
+
+        self.est11 = QCheckBox(Main)
+        self.est11.setObjectName(u"est11")
+        self.est11.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est11)
+
+        self.est12 = QCheckBox(Main)
+        self.est12.setObjectName(u"est12")
+        self.est12.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est12)
+
+        self.est13 = QCheckBox(Main)
+        self.est13.setObjectName(u"est13")
+        self.est13.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est13)
+
+        self.est14 = QCheckBox(Main)
+        self.est14.setObjectName(u"est14")
+        self.est14.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est14)
+
+        self.est15 = QCheckBox(Main)
+        self.est15.setObjectName(u"est15")
+        self.est15.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est15)
+
+        self.est16 = QCheckBox(Main)
+        self.est16.setObjectName(u"est16")
+        self.est16.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est16)
+
+        self.est17 = QCheckBox(Main)
+        self.est17.setObjectName(u"est17")
+        self.est17.setChecked(True)
+
+        self.Estatisticas.addWidget(self.est17)
+
+
+        self.gridLayout.addLayout(self.Estatisticas, 1, 1, 11, 1)
+
+        self.label = QLabel(Main)
+        self.label.setObjectName(u"label")
+        self.label.setFont(font1)
+
+        self.gridLayout.addWidget(self.label, 0, 1, 1, 1, Qt.AlignHCenter|Qt.AlignVCenter)
         self.retranslateUi(Main)
         QMetaObject.connectSlotsByName(Main)
     # setupUi
@@ -196,20 +345,50 @@ class Ui_Main(object):
         # else:
             
         self.campeonatoCB.setEnabled(True)
+    def ativarGerar(self):
+        index_pais = self.paisCB.currentIndex()
+        index_campeonato = self.campeonatoCB.isEnabled()
+        nomeDataset = self.textEdit.toPlainText()
+        if (index_pais != 0 and index_campeonato != False and nomeDataset !='' and (self.full_timeCB.isChecked or self.first_timeCB.isChecked or self.second_timeCB.isChecked)):
+            self.gerarButton.setEnabled(True)
+        elif (self.full_timeCB.isChecked == False or self.first_timeCB.isChecked == False  or self.second_timeCB.isChecked == False):
+            self.gerarButton.setEnabled(False)
+        else:
+            self.gerarButton.setEnabled(False)
 
+    def verificarInput(self):
+        index_pais = self.paisCB.currentIndex()
+        index_campeonato = self.campeonatoCB.isEnabled()
+        nomeDataset = self.textEdit.toPlainText()
+        pais = paises_campeonatos[index_pais-1]["País"].lower() 
+        if pais == "França": 
+            pais = "franca"
+        elif pais ==  "Itália":
+            pais = 'italia'
+        if (index_pais != 0 and index_campeonato != False and nomeDataset !='' and (self.full_timeCB.isChecked or self.first_timeCB.isChecked or self.second_timeCB.isChecked)):
+            listaTempos = []
+            if (self.full_timeCB.isChecked): listaTempos.append(0)
+            if(self.first_timeCB.isChecked): listaTempos.append(1)
+            if(self.second_timeCB.isChecked): listaTempos.append(2)
+            get_data_from_tournament(nomeDataset, pais, paises_campeonatos[index_pais-1]["Campeonatos"][index_campeonato-1]["label"], listaTempos)
+    
+    # def atualizarBarraProgresso(self, valor_atual, total_passos):
+    #     progresso_atual = (valor_atual + 1) * 100 // total_passos
+    #     self.progressBar.setValue(progresso_atual)
+    
     def retranslateUi(self, Main):
         Main.setWindowTitle(QCoreApplication.translate("Main", u"Main", None))
         self.tituloLabel.setText(QCoreApplication.translate("Main", u"EXTRA\u00c7\u00c3O DE DADOS", None))
         self.logo.setText("")
-        self.paisLabel.setText(QCoreApplication.translate("Main", u"Pa\u00eds", None))
-        self.paisCB.setItemText(0, QCoreApplication.translate("Main", u"Selecione um Pa\u00eds", None))
+        self.paisLabel.setText(QCoreApplication.translate("Main", u"Regi\u00e3o", None))
+        self.paisCB.setItemText(0, QCoreApplication.translate("Main", u"Selecione uma regi\u00e3o", None))
         for i in range(0, len(paises_campeonatos)):
             self.paisCB.setItemText(i+1, QCoreApplication.translate("Main", paises_campeonatos[i]["País"], None))
 
         self.campeonatoLabel.setText(QCoreApplication.translate("Main", u"Campeonato", None))
 
         self.temporadaLabel.setText(QCoreApplication.translate("Main", u"Temporada", None))
-        self.tempCB.setItemText(0, QCoreApplication.translate("Main", u"2023-2024", None))
+        self.tempCB.setItemText(0, QCoreApplication.translate("Main", u"EM BREVE", None))
 
         self.nomeDSLabel.setText(QCoreApplication.translate("Main", u"Nome do dataset", None))
         self.textEdit.setPlaceholderText(QCoreApplication.translate("Main", u"Digite o nome para o dataset", None))
@@ -218,7 +397,24 @@ class Ui_Main(object):
         self.first_timeCB.setText(QCoreApplication.translate("Main", u"1\u00b0 Tempo", None))
         self.second_timeCB.setText(QCoreApplication.translate("Main", u"2\u00b0 Tempo", None))
         self.gerarButton.setText(QCoreApplication.translate("Main", u"Gerar", None))
-
+        self.est1.setText(QCoreApplication.translate("Main", u"Gols do 1\u00b0 Tempo", None))
+        self.est2.setText(QCoreApplication.translate("Main", u"Gols do 2\u00b0 Tempo", None))
+        self.est3.setText(QCoreApplication.translate("Main", u"Gols Esperados", None))
+        self.est4.setText(QCoreApplication.translate("Main", u"Posse de bola", None))
+        self.est5.setText(QCoreApplication.translate("Main", u"Tentativas de gols", None))
+        self.est6.setText(QCoreApplication.translate("Main", u"Chutes no gol", None))
+        self.estt7.setText(QCoreApplication.translate("Main", u"Chutes para fora", None))
+        self.est8.setText(QCoreApplication.translate("Main", u"Faltas Cobradas", None))
+        self.est9.setText(QCoreApplication.translate("Main", u"Escanteios", None))
+        self.est10.setText(QCoreApplication.translate("Main", u"Impedimentos", None))
+        self.est11.setText(QCoreApplication.translate("Main", u"Laterais cobrados", None))
+        self.est12.setText(QCoreApplication.translate("Main", u"Defesas do goleiro", None))
+        self.est13.setText(QCoreApplication.translate("Main", u"Cart\u00f5es Amarelos", None))
+        self.est14.setText(QCoreApplication.translate("Main", u"Cart\u00f5es Vermelhos", None))
+        self.est15.setText(QCoreApplication.translate("Main", u"Passes Totais", None))
+        self.est16.setText(QCoreApplication.translate("Main", u"Ataques Perigosos", None))
+        self.est17.setText(QCoreApplication.translate("Main", u"Bolas Afastadas", None))
+        self.label.setText(QCoreApplication.translate("Main", u"Estat\u00edsticas", None))
 class MyWidget(QWidget):
     def __init__(self):
         super().__init__()
@@ -226,6 +422,7 @@ class MyWidget(QWidget):
         self.ui.setupUi(self)
 if __name__ == '__main__':
     import sys
+    print("Iniciando o aplicativo")
     app = QApplication(sys.argv)
     mywidget = MyWidget()
     mywidget.show()
