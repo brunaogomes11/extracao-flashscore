@@ -34,7 +34,7 @@ def get_data_from_tournament(nomeDataset, pais, campeonato, tempos):
   for i, field in enumerate(fields):
     id_partidas.append(field.get_attribute('id').split('_')[2])
   driver.get(f'https://www.flashscore.com.br/jogo/f96Ipi6G/#/resumo-de-jogo/estatisticas-de-jogo/1')
-  estatisticas = driver.find_elements(By.CLASS_NAME, '_row_1csk6_9')
+  estatisticas = driver.find_elements(By.CLASS_NAME, '_row_n1rcj_9')
   colunasEstatisticas = ['Data', 'Round', 'HomeTeam', 'AwayTeam']
   colunasDataSet = ['Data', 'Round', 'HomeTeam', 'AwayTeam', 'HT0G', 'AT0G', 'HT1G', 'AT1G', 'HT2G', 'AT2G']
   linhas = []
@@ -73,10 +73,15 @@ def get_data_from_tournament(nomeDataset, pais, campeonato, tempos):
       # Data do jogo - duelParticipant__startTime
       homeTeam = driver.find_element(By.CLASS_NAME, 'duelParticipant__home').text
       awayTeam = driver.find_element(By.CLASS_NAME, 'duelParticipant__away').text
-      if "Avança na competição\n" in homeTeam:
+      print(homeTeam)
+      if ("Avança na competição\n" in homeTeam):
         homeTeam = homeTeam.split("\n")[1]
-      if "Avança na competição\n" in awayTeam:
+      elif ("\nAvança na competição" in homeTeam):
+        homeTeam = homeTeam.split("\n")[0]
+      if ("Avança na competição\n" in awayTeam):
         awayTeam = awayTeam.split("\n")[1]
+      elif ("\nAvança na competição" in awayTeam):
+        awayTeam = awayTeam.split("\n")[0]
       # detailScore__wrapper
       ht0g = driver.find_element(By.CLASS_NAME, 'detailScore__wrapper').text.split('-')[0].replace("\n", '')
       at0g = driver.find_element(By.CLASS_NAME, 'detailScore__wrapper').text.split('-')[1].replace("\n", '')
@@ -88,6 +93,7 @@ def get_data_from_tournament(nomeDataset, pais, campeonato, tempos):
       for i, field in enumerate(estatisticas):
         estatisticasPartida.append([field.text.split('\n')[0], field.text.split('\n')[1], field.text.split('\n')[2]])
         colunasPartidas.append(field.text.split('\n')[1])
+      print(colunasPartidas)
       for i, coluna in enumerate(colunasEstatisticas[10:]):
           if coluna not in colunasPartidas:
               estatisticasPartida.insert(i, [0, coluna, 0])
@@ -106,10 +112,12 @@ def get_data_from_tournament(nomeDataset, pais, campeonato, tempos):
           partidaLinha.append(ht2g)
           partidaLinha.append(at2g)
           first_time = False
+      print(estatisticasPartida)
       for estatistica in estatisticasPartida:
           if estatistica[1] in colunasEstatisticas:
               partidaLinha.append(estatistica[0])
               partidaLinha.append(estatistica[2])
+      print(partidaLinha)
     linhas.append(partidaLinha)
   df = pd.DataFrame(linhas, columns=colunasDataSet)
   df.to_csv(f"{nomeDataset}.csv")
